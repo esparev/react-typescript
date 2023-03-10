@@ -38,7 +38,7 @@ const Home: NextPage = () => {
         <h1 className='text-4xl font-bold'>Component Lazy Image</h1>
         <p className='text-gray-600'>A generic React component to load images with lazy loading.</p>
         <p>✨✨</p>
-        <p className='text-gray-600'>The added images won't be downloaded until they are visible on the screen.</p>
+        <p className='text-gray-600'>The added images won{`&apos;`}t be downloaded until they are visible on the screen.</p>
         <p>✨✨</p>
         <button
           className='px-3 py-1 rounded bg-purple-600 text-white outline focus:outline-2 focus:outline-offset-2 focus:outline-purple-600'
