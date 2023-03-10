@@ -21,6 +21,7 @@ const Home: NextPage = () => {
       url: `https://randomfox.ca/images/${randomNumber()}.jpg`,
     };
     setImages([...images, newImageItem]);
+    window.plausible('add_fox');
   };
 
   return (
