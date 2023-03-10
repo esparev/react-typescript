@@ -3,10 +3,11 @@ import type { MouseEventHandler } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { Inter } from 'next/font/google';
+import { random } from 'lodash';
 import LazyImage from '../components/LazyImage';
 
 const inter = Inter({ subsets: ['latin'] });
-const random = (): number => Math.floor(Math.random() * 123) + 1;
+const randomNumber = (): number => random(1, 123);
 const generateId = (): string => Math.random().toString(36).substring(2, 9);
 
 const Home: NextPage = () => {
@@ -17,7 +18,7 @@ const Home: NextPage = () => {
 
     const newImageItem: IImageItem = {
       id: generateId(),
-      url: `https://randomfox.ca/images/${random()}.jpg`,
+      url: `https://randomfox.ca/images/${randomNumber()}.jpg`,
     };
     setImages([...images, newImageItem]);
   };
