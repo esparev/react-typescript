@@ -21,7 +21,6 @@ const Home: NextPage = () => {
       url: `https://randomfox.ca/images/${randomNumber()}.jpg`,
     };
     setImages([...images, newImageItem]);
-    window.plausible('add_fox');
   };
 
   return (
@@ -32,22 +31,35 @@ const Home: NextPage = () => {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main>
-        <h1 className='text-3xl font-bold underline'>Hello, World</h1>
-        <button onClick={addNewFox}>Add new fox</button>
-        {images.map((image, index) => (
-          <div key={image.id} className='p-4'>
-            <LazyImage
-              width={320}
-              height='auto'
-              src={image.url}
-              className='rounded bg-gray-400'
-              onLazyLoad={(img) => {
-                console.log(`Image #${index + 1} loaded on Node: ${img}`);
-              }}
-            />
-          </div>
-        ))}
+      <main className={`${inter.className} flex flex-col items-center gap-y-2 py-10`}>
+        <p className='uppercase text-sm font-medium text-purple-600'>
+          React with typescript course
+        </p>
+        <h1 className='text-4xl font-bold'>Component Lazy Image</h1>
+        <p className='text-gray-600'>A generic React component to load images with lazy loading.</p>
+        <p>✨✨</p>
+        <p className='text-gray-600'>The added images won't be downloaded until they are visible on the screen.</p>
+        <p>✨✨</p>
+        <button
+          className='px-3 py-1 rounded bg-purple-600 text-white outline focus:outline-2 focus:outline-offset-2 focus:outline-purple-600'
+          onClick={addNewFox}>
+          Add new fox
+        </button>
+        <div className='gap-3 columns-3 p-4'>
+          {images.map((image, index) => (
+            <div key={image.id} className='my-3 w-full aspect-video'>
+              <LazyImage
+                width={320}
+                height='auto'
+                src={image.url}
+                className='rounded bg-gray-400'
+                onLazyLoad={(img) => {
+                  console.log(`Image #${index + 1} loaded on Node: ${img}`);
+                }}
+              />
+            </div>
+          ))}
+        </div>
       </main>
     </>
   );
