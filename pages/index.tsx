@@ -35,13 +35,16 @@ const Home: NextPage = () => {
       <main>
         <h1 className='text-3xl font-bold underline'>Hello, World</h1>
         <button onClick={addNewFox}>Add new fox</button>
-        {images.map((image) => (
+        {images.map((image, index) => (
           <div key={image.id} className='p-4'>
             <LazyImage
               width={320}
               height='auto'
               src={image.url}
               className='rounded bg-gray-400'
+              onLazyLoad={(img) => {
+                console.log(`Image #${index + 1} loaded on Node: ${img}`);
+              }}
             />
           </div>
         ))}
